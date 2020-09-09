@@ -7,7 +7,6 @@
 ///////////////////////////////
 // SEARCH
 .search {
-  background-color: red;
   flex: 0 0 40%;
 
   display: flex;
@@ -34,7 +33,7 @@
 
     &::-webkit-input-placeholder {
       font-weight: 100;
-      color: var(--color-grey-light-4)
+      color: var(--color-grey-light-4);
     }
   }
 
@@ -65,30 +64,133 @@
 ///////////////////////////////
 // USER NAVIGATION
 .user-nav {
-  background-color: green;
+  align-self: stretch;
+
+  display: flex;
+  align-items: center;
+
+  & > * {
+    padding: 0 2rem;
+    cursor: pointer;
+    height: 100%;
+  }
+
+  & > *:hover {
+    background-color: var(--color-grey-light-3);
+  }
+
   &__icon-box{
-    
+    display: flex;
+    align-items: center;
+    position: relative;
   }
   
   &__icon{
     height: 2.25rem;
     width: 2.25rem;
+    fill: var(--color-grey-dark-3);
   }
 
   &__notification{
-
+    font-size: .8rem;
+    color: white;
+    height: 1.50rem;
+    width: 1.50rem;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    position: absolute;
+    top: 1.5rem;
+    right: 1.4rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__user {
-
+    display: flex;
+    align-items: center;
   }
 
   &__user-photo{
     height: 3.75rem;
     border-radius: 50%;
+    margin-right: 1rem;
   }
+}
 
-  &__user-name{
+///////////////////////////////
+// SIDE NAVIGATION
+.side-nav {
+  font-size: 1.4rem;
+  list-style: none;
+  
+  &__item {
+    position: relative;
+
+    &:not(:last-child) {
+      margin-bottom: .5rem;
+    }
     
   }
+
+  &__item::before {
+    // must have content inorder for it to show on the screen
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    background-color: var(--color-primary);
+    transform: scaleY(0);
+    transition: transform .2s, 
+    // .2 on width is for the delay
+                width .4s cubic-bezier(1,0,0,1) .2s,
+                background-color .1s;
+  }
+  
+  &__item:hover::before, 
+  &__item--active::before {
+    transform: scaleY(1);
+    width: 100%;
+  }
+
+  &__item:active::before {
+    background-color: var(--color-primary-light);
+  }
+
+  &__link:link,
+  &__link:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-grey-light-1);
+    display: block;
+    padding: 1.5rem 3rem;
+    margin: 1rem;
+    z-index: 10;
+    // need to have a position inorder for the z-index to work
+    position: relative;
+
+    display: flex;
+    align-items: center;
+  }
+
+
+  &__icon {
+    height: 1.75rem;
+    width: 1.75rem;
+    // currentColor is just the color of the parent element or the current element
+    fill: currentColor;
+    margin-right: 2rem;
+  }
+} 
+
+///////////////////////////////
+// LEGAL TEXT
+.legal {
+  font-size: 1.2rem;
+  color: var(--color-grey-light-4);
+  text-align: center;
+  padding: 2.5rem;
 }

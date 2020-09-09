@@ -28,10 +28,18 @@
   // use flex basis to define the width of the element
   // this element will not grow and will not shirnk because we put 0 for flex grow and flex shrink
   flex: 0 0 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .hotel-view {
-  background-color: lightcoral;
+  background-color: white;
+
+  // test
+  background-color: red;
+  height: 80rem;
+
   // by saying flex grow 1 we are saying it should occupy as much space as it can
   flex: 1;
   
